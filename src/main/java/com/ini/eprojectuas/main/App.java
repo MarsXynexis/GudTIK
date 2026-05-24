@@ -17,8 +17,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("DashboardView"), 640, 480);
+        scene = new Scene(loadFXML("DashboardView"), 1366, 768);
         stage.setScene(scene);
+//        stage.setTitle("Gudang TIK");
+        stage.setMinWidth(1366);  // Lebar minimal jendela (misal: resolusi HD)
+        stage.setMinHeight(768);  // Tinggi minimal jendela
         stage.show();
     }
 
