@@ -1,0 +1,13 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.iconKalender {
+    -fx-fill: #1e2b3c;  /* Warna ikon */
+    -fx-scale-x: 0.8;   /* Sedikit memperbesar */
+    -fx-scale-y: 0.8;
+}
