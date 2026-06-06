@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="412.0" prefWidth="392.0" spacing="20.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ini.eprojectuas.controller.TambahViewController">
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+
+   <Label text="Tambah Data Alat">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Label>
+
+   <GridPane hgap="10.0" vgap="15.0">
+     <columnConstraints>
+       <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="100.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="250.0" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+     <children>
+        <Label text="ID Alat" GridPane.rowIndex="1">
+           <font><Font name="System Bold" size="12.0" /></font>
+        </Label>
+        <TextField fx:id="fieldId" promptText="AA-000" style="-fx-background-radius: 5; -fx-border-color: #d1d5db; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Nama Alat">
+           <font><Font name="System Bold" size="12.0" /></font>
+        </Label>
+        <TextField fx:id="fieldNama" promptText="Masukkan nama alat..." style="-fx-background-radius: 5; -fx-border-color: #d1d5db; -fx-border-radius: 5;" GridPane.columnIndex="1" />
+
+        <Label text="Kategori" GridPane.rowIndex="2">
+           <font><Font name="System Bold" size="12.0" /></font>
+        </Label>
+        <ComboBox fx:id="comboKategori" prefWidth="280.0" promptText="Pilih Kategori" style="-fx-background-radius: 5; -fx-border-color: #d1d5db; -fx-border-radius: 5; -fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Tipe Barang" GridPane.rowIndex="3">
+           <font><Font name="System Bold" size="12.0" /></font>
+        </Label>
+        <ComboBox fx:id="comboTipe" prefWidth="280.0" promptText="Pilih Tipe" style="-fx-background-radius: 5; -fx-border-color: #d1d5db; -fx-border-radius: 5; -fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Stok" GridPane.rowIndex="4">
+           <font><Font name="System Bold" size="12.0" /></font>
+        </Label>
+        <TextField fx:id="fieldStok" promptText="Masukkan jumlah..." style="-fx-background-radius: 5; -fx-border-color: #d1d5db; -fx-border-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+     </children>
+   </GridPane>
+
+   <HBox alignment="CENTER_RIGHT" prefHeight="40.0" spacing="10.0">
+      <children>
+         <Button fx:id="btnBatal" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #6b7280; -fx-text-fill: white; -fx-background-radius: 5;" text="Batal">
+            <font><Font name="System Bold" size="12.0" /></font>
+         </Button>
+         <Button fx:id="btnSimpan" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #1d4ed8; -fx-text-fill: white; -fx-background-radius: 5;" text="Simpan">
+            <font><Font name="System Bold" size="12.0" /></font>
+         </Button>
+      </children>
+      <VBox.margin>
+         <Insets top="10.0" />
+      </VBox.margin>
+   </HBox>
+</VBox>

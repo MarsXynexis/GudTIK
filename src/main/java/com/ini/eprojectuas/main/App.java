@@ -1,41 +1,47 @@
 package com.ini.eprojectuas.main;
 
+import com.ini.eprojectuas.utils.UserSession;
+import javafx.scene.image.Image;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-/**
- * JavaFX App
- */
 public class App extends Application {
 
-    private static Scene scene;
+    private static Stage primaryStage; // Simpan stage utama agar bisa diakses global (opsional)
 
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("DashboardView"), 1366, 768);
+    public void start(Stage stage) throws Exception {
+        primaryStage = stage;
+        String viewTarget;
+
+        // Cek session: Jika belum login, ke LoginView. Jika sudah, ke MainView.
+        if (UserSession.getActiveIdUser() != null) {
+            viewTarget = "/com/ini/eprojectuas/view/MainView.fxml";
+        } else {
+            viewTarget = "/com/ini/eprojectuas/view/LoginView.fxml";
+
+        }
+        stage.setTitle("GudTIK");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(viewTarget));
+        Parent root = loader.load();
+
+        try {
+            Image applicationIcon = new Image(getClass().getResourceAsStream("/com/ini/eprojectuas/assets/logo128.png"));
+            primaryStage.getIcons().add(applicationIcon);
+        } catch (Exception e) {
+            System.out.println("Ikon gagal dimuat: " + e.getMessage());
+        }
+        
+        Scene scene = new Scene(root);
         stage.setScene(scene);
-//        stage.setTitle("Gudang TIK");
-        stage.setMinWidth(1366);  // Lebar minimal jendela (misal: resolusi HD)
-        stage.setMinHeight(768);  // Tinggi minimal jendela
+        stage.centerOnScreen();
         stage.show();
     }
 
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/ini/eprojectuas/view/" + fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
-
 }

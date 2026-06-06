@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" spacing="15.0" style="-fx-background-color: #f4f6f9;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ini.eprojectuas.controller.LaporanViewController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <Label text="Laporan Transaksi GudTIK">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      
+      <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f3f4f6; -fx-padding: 10px; -fx-background-radius: 5px;" styleClass="cardDashboard">
+         <children>
+            <VBox spacing="4.0">
+               <children>
+                  <Label text="Tanggal Mulai" textFill="#4b5563" />
+                  <DatePicker fx:id="dpMulai" prefHeight="30.0" prefWidth="150.0" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label text="Tanggal Selesai" textFill="#4b5563" />
+                  <DatePicker fx:id="dpSelesai" prefHeight="30.0" prefWidth="150.0" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label text="Jenis Transaksi" textFill="#4b5563" />
+                  <ComboBox fx:id="cbJenis" prefHeight="30.0" prefWidth="150.0" promptText="Semua" />
+               </children>
+            </VBox>
+            <Button fx:id="btnFilter" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #2563EB; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Filter">
+               <HBox.margin>
+                  <Insets top="18.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnReset" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #9ca3af; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Reset">
+               <HBox.margin>
+                  <Insets top="18.0" />
+               </HBox.margin>
+            </Button>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnCetak" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #16A34A; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Cetak / Save PDF">
+                     <HBox.margin>
+                        <Insets top="18.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      
+      <TableView fx:id="tabelLaporan" prefHeight="200.0" prefWidth="200.0" styleClass="cardDashboard" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="120.0" style="-fx-alignment: center;" text="ID Transaksi" />
+          <TableColumn fx:id="colNama" prefWidth="180.0" text="Nama Barang" />
+            <TableColumn fx:id="colJenis" prefWidth="120.0" text="Jenis Transaksi" />
+            <TableColumn fx:id="colJumlah" prefWidth="80.0" text="Jumlah" />
+            <TableColumn fx:id="colPelaku" prefWidth="130.0" text="Pelaku (Admin)" />
+            <TableColumn fx:id="colTanggal" prefWidth="150.0" text="Tanggal" />
+            <TableColumn fx:id="colKeterangan" prefWidth="500.0" text="Keterangan" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>
