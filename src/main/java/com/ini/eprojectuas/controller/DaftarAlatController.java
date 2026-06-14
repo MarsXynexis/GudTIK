@@ -36,6 +36,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 
 public class DaftarAlatController implements Initializable {
 
@@ -369,6 +370,12 @@ public class DaftarAlatController implements Initializable {
 
             Stage modalStage = new Stage();
             modalStage.setTitle("GudTIK");
+            try {
+                Image applicationIcon = new Image(getClass().getResourceAsStream("/com/ini/eprojectuas/assets/logo128.png"));
+                modalStage.getIcons().add(applicationIcon);
+            } catch (Exception e) {
+                System.out.println("Ikon gagal dimuat: " + e.getMessage());
+            }
             modalStage.setScene(new Scene(root));
             modalStage.setResizable(false);
             modalStage.initModality(Modality.APPLICATION_MODAL);
@@ -395,6 +402,12 @@ public class DaftarAlatController implements Initializable {
 
             Stage modalStage = new Stage();
             modalStage.setTitle("Edit Data Alat");
+            try {
+                Image applicationIcon = new Image(getClass().getResourceAsStream("/com/ini/eprojectuas/assets/logo128.png"));
+                modalStage.getIcons().add(applicationIcon);
+            } catch (Exception e) {
+                System.out.println("Ikon gagal dimuat: " + e.getMessage());
+            }
             modalStage.setScene(new Scene(root));
             modalStage.initModality(Modality.APPLICATION_MODAL);
             modalStage.showAndWait();

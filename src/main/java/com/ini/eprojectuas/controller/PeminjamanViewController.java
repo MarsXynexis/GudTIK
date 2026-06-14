@@ -27,6 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,8 +35,6 @@ import javafx.util.Callback;
 
 public class PeminjamanViewController implements Initializable {
 
-    @FXML
-    private StackPane searchBtn;
     @FXML
     private ComboBox<String> cbSearch;
     @FXML
@@ -251,7 +250,6 @@ public class PeminjamanViewController implements Initializable {
     private void loadTableData() {
         listPeminjaman.clear();
 
-        // ✅ JOIN langsung ke barang, tidak perlu fillBarangDetails lagi
         String sql = "SELECT p.id_peminjaman AS id_trans, p.id_barang, p.nim_peminjam AS nim, "
                 + "       p.jumlah, p.status, p.tanggal_pinjam AS tgl, "
                 + "       p.tenggat_waktu AS tgl_tenggat, p.tanggal_kembali AS tgl_kembali, "
@@ -300,7 +298,7 @@ public class PeminjamanViewController implements Initializable {
                 listPeminjaman.add(p);
             }
 
-            tabelAlat.setItems(listPeminjaman); // ✅ cukup satu kali di sini
+            tabelAlat.setItems(listPeminjaman);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -308,26 +306,26 @@ public class PeminjamanViewController implements Initializable {
         }
     }
 
-    // Method Helper untuk mengambil detail barang (nama dan kategori)
-    private void fillBarangDetails(Peminjaman p, String idBarang) {
-        String sql = "SELECT nama_barang, kategori FROM barang WHERE id_barang = ?";
-        Connection conn = Database.getConnection();
-        try (
-                PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, idBarang);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    p.setNamaBarang(rs.getString("nama_barang"));
-                    p.setKategori(rs.getString("kategori"));
-                } else {
-                    p.setNamaBarang("(Barang Dihapus)");
-                    p.setKategori("-");
-                }
-            }
-        } catch (SQLException e) {
-            System.err.println("Gagal load detail barang: " + e.getMessage());
-        }
-    }
+//    // Method Helper untuk mengambil detail barang (nama dan kategori)
+//    private void fillBarangDetails(Peminjaman p, String idBarang) {
+//        String sql = "SELECT nama_barang, kategori FROM barang WHERE id_barang = ?";
+//        Connection conn = Database.getConnection();
+//        try (
+//                PreparedStatement ps = conn.prepareStatement(sql)) {
+//            ps.setString(1, idBarang);
+//            try (ResultSet rs = ps.executeQuery()) {
+//                if (rs.next()) {
+//                    p.setNamaBarang(rs.getString("nama_barang"));
+//                    p.setKategori(rs.getString("kategori"));
+//                } else {
+//                    p.setNamaBarang("(Barang Dihapus)");
+//                    p.setKategori("-");
+//                }
+//            }
+//        } catch (SQLException e) {
+//            System.err.println("Gagal load detail barang: " + e.getMessage());
+//        }
+//    }
 
     private void bukaModalTambah() {
         try {
@@ -337,6 +335,12 @@ public class PeminjamanViewController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("GudTIK");
+            try {
+                Image applicationIcon = new Image(getClass().getResourceAsStream("/com/ini/eprojectuas/assets/logo128.png"));
+                stage.getIcons().add(applicationIcon);
+            } catch (Exception e) {
+                System.out.println("Ikon gagal dimuat: " + e.getMessage());
+            }
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 
@@ -356,6 +360,12 @@ public class PeminjamanViewController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("GudTIK");
+            try {
+                Image applicationIcon = new Image(getClass().getResourceAsStream("/com/ini/eprojectuas/assets/logo128.png"));
+                stage.getIcons().add(applicationIcon);
+            } catch (Exception e) {
+                System.out.println("Ikon gagal dimuat: " + e.getMessage());
+            }
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 
